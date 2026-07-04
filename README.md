@@ -107,6 +107,18 @@ Note: Create React App only exposes variables prefixed with `REACT_APP_`, and th
    - **Posts Tab**: Shows a list of mock blog posts
 4. Click the "Refresh Data" button to re-fetch data from the backend
 
+## Testing
+
+Three layers of tests:
+
+| Layer | Location | Command | What it covers |
+| --- | --- | --- | --- |
+| Backend unit/API | `backend/` | `cd backend && npm test` | Express routes via Jest + Supertest |
+| Frontend component | `frontend/` | `cd frontend && npm test` | `App` rendering/interaction via React Testing Library (axios mocked) |
+| End-to-end (UI) | `e2e/` | `npm install && npx playwright install --with-deps chromium && npm run test:e2e` | Real browser driving the running app (Playwright) |
+
+The Playwright config (`playwright.config.js`) auto-starts the backend and frontend, so you don't need them running first. If they're already running locally, it reuses them. In CI it always starts fresh.
+
 ## API Examples
 
 ### Get all users
