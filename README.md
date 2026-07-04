@@ -73,6 +73,31 @@ sample-app/
    
    The frontend will run on `http://localhost:3000`
 
+## Configuration
+
+Both apps read optional environment variables and fall back to sensible localhost defaults, so no setup is required for local development.
+
+### Backend (`backend/`)
+
+| Variable | Default | Description |
+| --- | --- | --- |
+| `PORT` | `5000` | Port the Express server listens on |
+
+### Frontend (`frontend/`)
+
+| Variable | Default | Description |
+| --- | --- | --- |
+| `REACT_APP_API_URL` | `http://localhost:5000` | Base URL of the backend API |
+
+To override, copy the example env files and edit them:
+
+```bash
+cp backend/.env.example backend/.env        # then edit PORT
+cp frontend/.env.example frontend/.env.local # then edit REACT_APP_API_URL
+```
+
+Note: Create React App only exposes variables prefixed with `REACT_APP_`, and they are read at build/start time — restart the dev server after changing them.
+
 ## Usage
 
 1. Make sure both the backend and frontend servers are running
