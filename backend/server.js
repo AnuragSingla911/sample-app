@@ -82,7 +82,11 @@ app.post('/api/posts', (req, res) => {
   res.status(201).json(newPost);
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+// Start server (skip when imported, e.g. by tests)
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;
